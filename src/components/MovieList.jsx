@@ -19,15 +19,15 @@ const MovieList = () => {
   }
 
   // loope über MOVIES ARRAY
-  // rendere für jeden Movie eine MovieCard
-  return ( <div>
-    { 
-    movies.map( movie => (
-      <MovieCard key={movie.id} movie={movie} />
-    )) 
-    }
-    <button onClick={ addMovie }>Adde Movie</button>
-  </div> );
+  // rendere für jeden Movie im Array eine MovieCard => und gebe Daten des Movies als Prop hinein!
+  const jsxMovies = movies.map( movie => <MovieCard key={movie.id} movie={movie} /> ) 
+
+  return ( 
+    <div>
+      { jsxMovies }
+      <button onClick={ addMovie }>Adde Movie</button>
+    </div> 
+  );
 }
  
 export default MovieList;
