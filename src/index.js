@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MovieProvider from './contexts/MovieContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // SHARE all our data with the world (= App.js)
+  <MovieProvider>
     <App />
-  </React.StrictMode>,
+  </MovieProvider>,
   document.getElementById('root')
 );
 
