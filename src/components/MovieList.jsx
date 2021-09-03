@@ -5,17 +5,17 @@ import MovieCard from "./MovieCard";
 const MovieList = () => {
 
   // hole MOVIES ARRAY aus zentralem (!) State (= Context Box!)
-  const { movies, setMovies } = useContext( MovieContext ) // useContext HOLT MIR DATEN aus der zentralen BOX!
+  const { movies, addMovie } = useContext( MovieContext ) // useContext HOLT MIR DATEN aus der zentralen BOX!
 
-  const addMovie = () => {
+  const handleAddMovie = () => {
     const titleNew = prompt("Neuen Title bitte bro!")
     if(!titleNew) return
 
     // generere neues Movie Objekt
     const movieNew = { id: Date.now().toString(), title: titleNew }
 
-    // create copy and add new movie on top
-    setMovies( [...movies, movieNew] )
+    // add movie to central movies in context...
+    addMovie( movieNew )
   }
 
   // loope über MOVIES ARRAY
@@ -25,7 +25,7 @@ const MovieList = () => {
   return ( 
     <div>
       { jsxMovies }
-      <button onClick={ addMovie }>Adde Movie</button>
+      <button onClick={ handleAddMovie }>Adde Movie</button>
     </div> 
   );
 }
