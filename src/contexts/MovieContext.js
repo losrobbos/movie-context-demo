@@ -30,8 +30,11 @@ const MovieProvider = (props) => {
     {id: "p3", title: "Teriyaki"},
   ])
 
+  // CENTRAL SEARCH TERM
+  const [searchTerm, setSearchTerm] = useState("")
+
   // alle Daten, die ich mit Components teilen will
-  const sharedData = { movies, setMovies, pizzas, setPizzas }
+  const sharedData = { movies, setMovies, pizzas, setPizzas, searchTerm, setSearchTerm }
 
   // Provider WRAPPT unsere ganze App!
   // Und brint die Daten zu ALLEN Components

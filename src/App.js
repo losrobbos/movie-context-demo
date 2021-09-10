@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Footer from './components/Footer';
 import MovieList from './components/MovieList';
+import MovieFilter from './components/MovieFilter';
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
       </header>
 
       <main>
+        <MovieFilter></MovieFilter>
         <MovieList></MovieList>
       </main>
 

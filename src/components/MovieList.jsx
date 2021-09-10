@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 const MovieList = () => {
 
   // hole MOVIES ARRAY aus zentralem (!) State (= Context Box!)
-  const { movies, setMovies } = useContext( MovieContext ) // useContext HOLT MIR DATEN aus der zentralen BOX!
+  const { movies, setMovies, searchTerm } = useContext( MovieContext ) // useContext HOLT MIR DATEN aus der zentralen BOX!
 
   const addMovie = () => {
     const titleNew = prompt("Neuen Title bitte bro!")
@@ -20,7 +20,18 @@ const MovieList = () => {
 
   // loope über MOVIES ARRAY
   // rendere für jeden Movie im Array eine MovieCard => und gebe Daten des Movies als Prop hinein!
-  const jsxMovies = movies.map( movie => <MovieCard key={movie.id} movie={movie} /> ) 
+
+  let moviesToDisplay = movies 
+
+  // wenn Search term => dann filtere movies nach searchTerm und displaye FILTERED liste!
+  // movie => { id: 123, title: "XYZ", price: 5.9 }
+  if(searchTerm) {
+    // schaue, ob searchTerm in title ENTHALTEN (=included) ist
+    const searchTermLc = searchTerm.toLowerCase()
+    moviesToDisplay = movies.filter( movie => movie.title.toLowerCase().includes( searchTermLc ) )
+  }
+
+  const jsxMovies = moviesToDisplay.map( movie => <MovieCard key={movie.id} movie={movie} /> ) 
 
   return ( 
     <div>
